@@ -1,0 +1,22 @@
+{
+  "name": "rsocket-test-client",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "link-dev": "npm link @rsocket/rsocket-core && npm link @rsocket/rsocket-websocket-client",
+    "postinstall": "npm run link-dev"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "close-with-grace": "^1.1.0",
+    "ws": "^8.2.1"
+  }
+}
