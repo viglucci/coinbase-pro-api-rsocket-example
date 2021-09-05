@@ -20,13 +20,13 @@ async function main() {
 
     tickerService.getTicker("BTC-USD").subscribe({
         next: (payload) => {
-            console.log(i, payload);
+            console.log(payload, {data: JSON.parse(payload.data.toString())});
         },
         error: (e) => {
-            console.error(i, e);
+            console.error(e);
         },
         complete: () => {
-            console.log(i, "tickerService done")
+            console.log("tickerService done")
         }
     });
 }

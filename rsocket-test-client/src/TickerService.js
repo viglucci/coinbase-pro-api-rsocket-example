@@ -9,7 +9,7 @@ class TickerService {
     getTicker(ticker) {
         const requestPayload = {
             data: Buffer.from(JSON.stringify({
-                ticker
+                productId: ticker
             })),
             metadata: Buffer.from(JSON.stringify({
                 route: "TickerService.getTicker"

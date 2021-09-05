@@ -1,8 +1,8 @@
-const {RSocketServer, RSocketError, ErrorCodes} = require('@rsocket/rsocket-core');
+const {RSocketServer} = require('@rsocket/rsocket-core');
 const {WebsocketServerTransport} = require('@rsocket/rsocket-websocket-server');
 const Websocket = require('ws');
+const CoinbaseApiAdapter = require('./services/CoinbaseApiAdapter');
 const TickerService = require('./services/TickerService');
-const {EventEmitter} = require('events');
 const pino = require('pino');
 const logger = pino();
 
@@ -36,7 +36,7 @@ const routeRegistry = {
     }
 };
 
-routeRegistry.registerService(new TickerService());
+routeRegistry.registerService(new TickerService(new CoinbaseApiAdapter()));
 
 function getAcceptor() {
     return {
