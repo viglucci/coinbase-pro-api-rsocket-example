@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "close-with-grace": "^1.1.0",
+    "rxjs": "^7.3.0",
     "ws": "^8.2.1"
   }
 }
