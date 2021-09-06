@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "link-dev": "npm link @rsocket/rsocket-core && npm link @rsocket/rsocket-websocket-client",
+    "postinstall": "npm run link-dev"
   },
   "dependencies": {
     "next": "11.1.2",
