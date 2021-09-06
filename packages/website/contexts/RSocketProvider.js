@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 const {RSocketConnector} = require('@rsocket/rsocket-core');
 const {WebsocketClientTransport} = require('@rsocket/rsocket-websocket-client');
-
 import Context from './RSocketContext';
 
 const RSocketProvider = (props) => {

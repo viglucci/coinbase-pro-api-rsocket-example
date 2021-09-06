@@ -1,7 +1,7 @@
 
 class TickerService {
 
-    constructor(coinbaseAdapter) {
+    constructor({ coinbaseAdapter }) {
         this.coinbaseAdapter = coinbaseAdapter;
     }
 

@@ -36,7 +36,10 @@ const routeRegistry = {
     }
 };
 
-routeRegistry.registerService(new TickerService(new CoinbaseApiAdapter()));
+const coinbaseAdapter = new CoinbaseApiAdapter({ logger });
+const tickerService = new TickerService({ coinbaseAdapter });
+
+routeRegistry.registerService(tickerService);
 
 function getAcceptor() {
     return {

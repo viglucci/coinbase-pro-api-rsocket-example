@@ -1,42 +1,24 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import React, {useContext, useEffect, useState} from "react";
-
-const {MAX_REQUEST_N} = require('@rsocket/rsocket-core');
+import React, {useContext} from "react";
 import RSocketContext from "../contexts/RSocketContext";
 import RSocketProvider from "../contexts/RSocketProvider";
+import useTicker from "../hooks/useTicker";
 
 const ConnectedState = () => {
-    const [_, rsocket] = useContext(RSocketContext);
-    const [data, setData] = useState({});
-    useEffect(() => {
-        const requestPayload = {
-            data: Buffer.from(JSON.stringify({
-                productId: 'BTC-USD'
-            })),
-            metadata: Buffer.from(JSON.stringify({
-                route: "TickerService.getTicker"
-            })),
-        };
-        const cancellable = rsocket.requestStream(requestPayload, MAX_REQUEST_N, {
-            onError(error) {
-                // subscriber.error(error);
-            },
-            onNext: (payload, isComplete) => {
-                const data = JSON.parse(payload.data.toString());
-                setData(data);
-            },
-            onComplete() {},
-        })
-        return () => {
-            cancellable.cancel();
-        };
-    }, []);
+    const btcData = useTicker('BTC-USD');
+    // const ethData = useTicker('ETH-USD');
+    // const dogeData = useTicker('DOGE-USD');
+    const values = [
+        // btcData,
+        // ethData,
+        btcData
+    ];
     return (
         <pre>
             <code>
-                {JSON.stringify(data, null, 2)}
+                {JSON.stringify(values, null, 2)}
             </code>
         </pre>
     );
