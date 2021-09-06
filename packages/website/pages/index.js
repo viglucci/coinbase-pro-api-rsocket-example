@@ -7,13 +7,13 @@ import RSocketProvider from "../contexts/RSocketProvider";
 import useTicker from "../hooks/useTicker";
 
 const ConnectedState = () => {
-    const btcData = useTicker('BTC-USD');
-    // const ethData = useTicker('ETH-USD');
+    // const btcData = useTicker('BTC-USD');
+    const ethData = useTicker('ETH-USD');
     // const dogeData = useTicker('DOGE-USD');
     const values = [
         // btcData,
-        // ethData,
-        btcData
+        ethData,
+        // btcData
     ];
     return (
         <pre>
