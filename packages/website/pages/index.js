@@ -1,12 +1,49 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+
+const {MAX_REQUEST_N} = require('@rsocket/rsocket-core');
 import RSocketContext from "../contexts/RSocketContext";
 import RSocketProvider from "../contexts/RSocketProvider";
 
-function Contents() {
-    const [rsocketState, rsocket] = useContext(RSocketContext);
+const ConnectedState = () => {
+    const [_, rsocket] = useContext(RSocketContext);
+    const [data, setData] = useState({});
+    useEffect(() => {
+        const requestPayload = {
+            data: Buffer.from(JSON.stringify({
+                productId: 'BTC-USD'
+            })),
+            metadata: Buffer.from(JSON.stringify({
+                route: "TickerService.getTicker"
+            })),
+        };
+        const cancellable = rsocket.requestStream(requestPayload, MAX_REQUEST_N, {
+            onError(error) {
+                // subscriber.error(error);
+            },
+            onNext: (payload, isComplete) => {
+                const data = JSON.parse(payload.data.toString());
+                setData(data);
+            },
+            onComplete() {},
+        })
+        return () => {
+            cancellable.cancel();
+        };
+    }, []);
+    return (
+        <pre>
+            <code>
+                {JSON.stringify(data, null, 2)}
+            </code>
+        </pre>
+    );
+};
+
+const Contents = () => {
+    const [rsocketState, _] = useContext(RSocketContext);
     return (
         <div className={styles.container}>
             <Head>
@@ -20,6 +57,7 @@ function Contents() {
                 <h1 className={styles.title}>
                     {rsocketState}
                 </h1>
+                {rsocketState === 'CONNECTED' ? <ConnectedState/> : null}
             </main>
 
             <footer className={styles.footer}>
