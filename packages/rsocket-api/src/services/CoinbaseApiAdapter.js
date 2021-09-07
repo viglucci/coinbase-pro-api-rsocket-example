@@ -1,4 +1,4 @@
-const {Observable, Subject, fromEvent, filter} = require('rxjs');
+const {Observable, fromEvent, filter} = require('rxjs');
 const {WebsocketClient} = require('coinbase-pro');
 
 class CoinbaseApiAdapter {
