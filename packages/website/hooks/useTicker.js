@@ -5,6 +5,7 @@ import RSocketContext from "../contexts/RSocketContext";
 function useTicker(ticker) {
     const [_, rsocket] = useContext(RSocketContext);
     const [data, setData] = useState({});
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const requestPayload = {
@@ -17,7 +18,7 @@ function useTicker(ticker) {
         };
         const cancellable = rsocket.requestStream(requestPayload, MAX_REQUEST_N, {
             onError(error) {
-                // subscriber.error(error);
+                setData(error);
             },
             onNext: (payload, isComplete) => {
                 const data = JSON.parse(payload.data.toString());
@@ -30,7 +31,7 @@ function useTicker(ticker) {
         };
     }, []);
 
-    return data;
+    return [data, error];
 }
 
 export default useTicker;
