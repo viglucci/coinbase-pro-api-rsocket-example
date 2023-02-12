@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node ./index.js",
     "dev": "nodemon ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "link-dev": "npm link @rsocket/rsocket-core && npm link @rsocket/rsocket-websocket-server",
-    "postinstall": "npm run link-dev"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
@@ -19,6 +17,9 @@
     "close-with-grace": "^1.1.0",
     "coinbase-pro": "^0.9.0",
     "pino": "^6.13.1",
+    "rsocket-core": "^1.0.0-alpha.3",
+    "rsocket-websocket-client": "^1.0.0-alpha.3",
+    "rsocket-websocket-server": "^1.0.0-alpha.3",
     "rxjs": "^7.3.0",
     "ws": "^8.2.1"
   }

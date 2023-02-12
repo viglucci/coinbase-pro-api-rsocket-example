@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react";
-const {MAX_REQUEST_N} = require("@rsocket/rsocket-core");
+const {MAX_REQUEST_N} = require("rsocket-core");
 import RSocketContext from "../contexts/RSocketContext";
 
 function useTicker(ticker) {

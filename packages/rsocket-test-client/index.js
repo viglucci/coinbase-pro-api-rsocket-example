@@ -1,7 +1,7 @@
 const {exit} = require('process');
 const WebSocket = require('ws');
-const {RSocketConnector} = require('@rsocket/rsocket-core');
-const {WebsocketClientTransport} = require('@rsocket/rsocket-websocket-client');
+const {RSocketConnector} = require('rsocket-core');
+const {WebsocketClientTransport} = require('rsocket-websocket-client');
 const TickerService = require("./src/TickerService");
 
 function makeConnector() {

@@ -1,5 +1,5 @@
 const {Observable} = require("rxjs");
-const {MAX_REQUEST_N} = require('@rsocket/rsocket-core');
+const {MAX_REQUEST_N} = require('rsocket-core');
 
 class TickerService {
     constructor(rsocket) {

@@ -1,5 +1,5 @@
-const {RSocketServer} = require('@rsocket/rsocket-core');
-const {WebsocketServerTransport} = require('@rsocket/rsocket-websocket-server');
+const {RSocketServer} = require('rsocket-core');
+const {WebsocketServerTransport} = require('rsocket-websocket-server');
 const Websocket = require('ws');
 const CoinbaseApiAdapter = require('./services/CoinbaseApiAdapter');
 const TickerService = require('./services/TickerService');
